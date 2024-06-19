@@ -18,9 +18,8 @@ public class Executor {
     public int lookForGreatest(int[][] array, int rows, int columns) {
         int greatest = Integer.MIN_VALUE;
 
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
 
-        // Hacer el cálculo y buscar el mayor valor en la misma iteración
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 int squaredValue = array[i][j] * array[i][j];
@@ -32,7 +31,6 @@ public class Executor {
 
         executorService.shutdown();
         try {
-            // Esperar a que se completen todos los cálculos
             if (!executorService.awaitTermination(5, TimeUnit.SECONDS)) {
                 executorService.shutdownNow();
             }

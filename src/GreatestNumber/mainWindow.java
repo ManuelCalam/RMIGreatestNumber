@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 public class mainWindow extends JFrame {
@@ -132,12 +130,19 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    matrixService.setMethod("sequential");
-                    startTime = System.nanoTime();
-                    greatestNumber = matrixService.getGreatestNumber();
-                    endTime = System.nanoTime();
-                    duration = matrixService.getTime();
-                    greatestNumberOutput.setText(String.valueOf(greatestNumber));
+                    matrixService.setMethod("Secuencial");
+                    
+                    for(int i = 0; i<3; i++){
+                        startTime = System.nanoTime();
+                        greatestNumber = matrixService.getGreatestNumber();
+                        endTime = System.nanoTime();
+                        duration = matrixService.getTime();
+                        greatestNumberOutput.setText(String.valueOf(greatestNumber));
+                        //System.out.println(duration);
+                        Thread.sleep(10);
+
+                    }
+                    
                     sequentialTimer.setText(String.valueOf(duration) + "ms");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -149,12 +154,17 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    matrixService.setMethod("forkJoin");
-                    startTime = System.nanoTime();
-                    greatestNumber = matrixService.getGreatestNumber();
-                    endTime = System.nanoTime();
-                    duration = matrixService.getTime();
-                    greatestNumberOutput.setText(String.valueOf(greatestNumber));
+                    matrixService.setMethod("ForkJoin");
+                    
+                    for(int i = 0; i<3; i++){
+                        startTime = System.nanoTime();
+                        greatestNumber = matrixService.getGreatestNumber();
+                        endTime = System.nanoTime();
+                        duration = matrixService.getTime();
+                        greatestNumberOutput.setText(String.valueOf(greatestNumber));
+                        //System.out.println(duration);
+                        Thread.sleep(10);
+                    }
                     forkJoinTimer.setText(String.valueOf(duration) + "ms");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -166,12 +176,20 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    matrixService.setMethod("executor");
-                    startTime = System.nanoTime();
-                    greatestNumber = matrixService.getGreatestNumber();
-                    endTime = System.nanoTime();
-                    duration = matrixService.getTime();
-                    greatestNumberOutput.setText(String.valueOf(greatestNumber));
+                    matrixService.setMethod("Executor");
+                    
+                    for(int i = 0; i<3; i++){
+                        startTime = System.nanoTime();
+                        greatestNumber = matrixService.getGreatestNumber();
+                        endTime = System.nanoTime();
+                        duration = matrixService.getTime();
+                        greatestNumberOutput.setText(String.valueOf(greatestNumber));
+                        //System.out.println(duration);
+                        Thread.sleep(10);
+
+                    }
+
+                    
                     executorTimer.setText(String.valueOf(duration) + "ms");
                 } catch (Exception e) {
                     e.printStackTrace();

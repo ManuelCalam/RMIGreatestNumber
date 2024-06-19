@@ -16,14 +16,13 @@ public class MatrixServiceImpl extends UnicastRemoteObject implements MatrixServ
     private int greatestNumber;
     private double duration;
 
-    // GUI components
     private JTextArea matrixTextArea;
     private JTextArea methodTextArea;
     private JButton clearButton;
 
     protected MatrixServiceImpl() throws RemoteException {
         super();
-        setupGUI();
+        drawWindow();
     }
 
     @Override
@@ -75,14 +74,14 @@ public class MatrixServiceImpl extends UnicastRemoteObject implements MatrixServ
         long startTime = System.nanoTime();
 
         switch (method) {
-            case "sequential":
+            case "Secuencial":
                 Secuencial sequential = new Secuencial();
                 greatestNumber = sequential.lookForGreatest(concatenatedMatrix, concatenatedMatrix.length, concatenatedMatrix[0].length);
                 break;
-            case "forkJoin":
+            case "ForkJoin":
                 greatestNumber = ForkJoin.lookForGreatest(concatenatedMatrix);
                 break;
-            case "executor":
+            case "Executor":
                 try {
                     greatestNumber = new Executor().lookForGreatest(concatenatedMatrix, concatenatedMatrix.length, concatenatedMatrix[0].length);
                 } catch (Exception e) {
@@ -104,13 +103,13 @@ public class MatrixServiceImpl extends UnicastRemoteObject implements MatrixServ
         return duration;
     }
 
-    private void setupGUI() {
+    private void drawWindow() {
         JFrame frame = new JFrame("Server");
         frame.setSize(600, 500);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JLabel matrixLabel = new JLabel("Concatenated Matrix:");
+        JLabel matrixLabel = new JLabel("Matriz Concatenada:");
         matrixLabel.setBounds(10, 10, 200, 20);
         frame.add(matrixLabel);
 
@@ -119,7 +118,7 @@ public class MatrixServiceImpl extends UnicastRemoteObject implements MatrixServ
         matrixScrollPane.setBounds(10, 40, 560, 150);
         frame.add(matrixScrollPane);
 
-        JLabel methodLabel = new JLabel("Methods Requested:");
+        JLabel methodLabel = new JLabel("Métodos solicitados:");
         methodLabel.setBounds(10, 200, 200, 20);
         frame.add(methodLabel);
 
@@ -128,7 +127,7 @@ public class MatrixServiceImpl extends UnicastRemoteObject implements MatrixServ
         methodScrollPane.setBounds(10, 230, 560, 100);
         frame.add(methodScrollPane);
 
-        clearButton = new JButton("Clear Matrix");
+        clearButton = new JButton("Borrar");
         clearButton.setBounds(230, 340, 120, 30);
         clearButton.addActionListener(e -> clearMatrix());
         frame.add(clearButton);

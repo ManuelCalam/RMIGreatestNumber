@@ -27,7 +27,7 @@ public class ForkJoin extends RecursiveTask<Integer> {
 
     @Override
     protected Integer compute() {
-        if (end - start <= 3000) {
+        if (end - start <= 2000) {
             int greatest = array[start][0];
             for (int i = start; i < end; i++) {
                 for (int j = 0; j < array[i].length; j++) {
