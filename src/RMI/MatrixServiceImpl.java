@@ -93,7 +93,7 @@ public class MatrixServiceImpl extends UnicastRemoteObject implements MatrixServ
         }
 
         long endTime = System.nanoTime();
-        duration = (endTime - startTime) / 1000000.0;
+        duration = (endTime - startTime) / 100000.0;
 
         return greatestNumber;
     }

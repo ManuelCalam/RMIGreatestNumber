@@ -143,7 +143,7 @@ public class mainWindow extends JFrame {
 
                     }
                     
-                    sequentialTimer.setText(String.valueOf(duration) + "ms");
+                    sequentialTimer.setText(String.valueOf(duration));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -165,7 +165,7 @@ public class mainWindow extends JFrame {
                         //System.out.println(duration);
                         Thread.sleep(10);
                     }
-                    forkJoinTimer.setText(String.valueOf(duration) + "ms");
+                    forkJoinTimer.setText(String.valueOf(duration));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -190,7 +190,7 @@ public class mainWindow extends JFrame {
                     }
 
                     
-                    executorTimer.setText(String.valueOf(duration) + "ms");
+                    executorTimer.setText(String.valueOf(duration));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
